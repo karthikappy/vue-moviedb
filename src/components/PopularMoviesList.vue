@@ -2,7 +2,7 @@
   <div class="popular-movies-list">
     <div v-if="searching">Searching...</div>
     <div class="row">
-      <div class="col-md-6" v-for="movie in results" :key="movie.id">
+      <div class="col-md-4 col-sm-6 col-xs-12" v-for="movie in results" :key="movie.id">
         <div class="card">
 			<img :src="'https://image.tmdb.org/t/p/w780' + movie.backdrop_path" alt="Backdrop" class="card-img-top">
           <h5 class="card-title">{{movie.title}}</h5>
