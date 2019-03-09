@@ -1,5 +1,11 @@
 # vue-moviedb
 
+This is my first NodeJS application. It is basically a simple interface to view and explore movie data from https://www.themoviedb.org/
+
+## Movie DB API
+
+This application makes use of the Movie-DB API. YTou will need to obtain an API KEY from the website. Instructions to use the API will be added later.
+
 ## Project setup
 ```
 npm install
