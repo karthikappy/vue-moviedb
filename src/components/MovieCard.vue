@@ -10,6 +10,19 @@
               <div class="col-8">
                 <h5 class="card-title">{{movie.title}}</h5>
                 <p class="card-text">{{movie.overview}}</p>
+                <div class="row">
+                    <div class="col-4" v-if="movie.release_date">
+                        <div class="col-12">Released</div>
+                        <div class="col-12">{{movie.release_date}}</div>
+                    </div>
+                    <div class="col-4" v-if="movie.adult">
+                        <div class="col-12">Adult</div>
+                    </div>
+                   <div class="col-4" v-if="movie.original_language">
+                        <div class="col-12">{{movie.original_language}}</div>
+                    </div>
+                    
+                </div>
               </div>
             </div>
           </div>
