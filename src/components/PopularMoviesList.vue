@@ -2,11 +2,21 @@
   <div class="popular-movies-list">
     <div v-if="searching">Searching...</div>
     <div class="row">
-      <div class="col-md-4 col-sm-6 col-xs-12" v-for="movie in results" :key="movie.id">
-        <div class="card">
-			<img :src="'https://image.tmdb.org/t/p/w780' + movie.backdrop_path" alt="Backdrop" class="card-img-top">
-          <h5 class="card-title">{{movie.title}}</h5>
-          <p class="card-text">{{movie.overview}}</p>
+      <div class="col-md-6 col-xs-12" v-for="movie in results" :key="movie.id">
+        <div class="card movie-card">
+          <div class="card-bgimage" :style="{'background-image': 'url(https://image.tmdb.org/t/p/w780'+movie.backdrop_path+')'}" />
+			    <!-- <img :src="'https://image.tmdb.org/t/p/w780' + movie.backdrop_path" alt="Backdrop" class="card-img-top"> -->
+          <div class="movie-info col-md-12">
+            <div class="row">
+              <div class="col-4">
+                <img :src="'https://image.tmdb.org/t/p/w780' + movie.poster_path" alt="" width="100%">
+              </div>
+              <div class="col-8">
+                <h5 class="card-title">{{movie.title}}</h5>
+                <p class="card-text">{{movie.overview}}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -44,5 +54,21 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  .card-bgimage {
+    height: 100%;
+    background-size: cover;
+    filter: blur(8px)
+  }
+  .movie-card {
+    width:100%;
+    height:330px;
+    max-height:500px;
+  }
+  .movie-info {
+    position:absolute;
+    color:white;
+    background-color:rgba(0, 0, 0, 0.281);
+
+  }
 </style>
