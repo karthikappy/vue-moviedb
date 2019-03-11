@@ -49,7 +49,7 @@ export default {
     max-height:500px;
   }
   .movie-info {
-    position:absolute;
+    position:absolute !important;
     color:white;
     background-color:rgba(0, 0, 0, 0.281);
 
