@@ -46,7 +46,9 @@ export default {
   .movie-card {
     width:100%;
     height:330px;
-    max-height:500px;
+    max-height:330px;
+    overflow: hidden;
+
   }
   .movie-info {
     position:absolute !important;
