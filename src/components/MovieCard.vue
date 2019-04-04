@@ -8,7 +8,7 @@
       <div class="movie-info col-md-12">
         <div class="row">
           <div class="col-4">
-            <img :src="'https://image.tmdb.org/t/p/w780' + movie.poster_path" alt width="100%">
+            <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w780' + movie.poster_path" alt width="100%">
           </div>
           <div class="col-8">
             <div class="row">
