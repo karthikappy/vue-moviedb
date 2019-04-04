@@ -35,7 +35,7 @@ export default {
     performSearch: function() {
       this.searching = true;
       fetch(
-        "https://api.themoviedb.org/3/search/movie/?query=" +
+        "https://api.themoviedb.org/3/search/movie?query=" +
           this.query +
           "&page=1&language=en-US&api_key=" +
           process.env.VUE_APP_API_KEY
