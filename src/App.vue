@@ -3,6 +3,7 @@
     <popularMoviesList />
     <topRatedMoviesList />
     <movie-search-app />
+    <PopularTVList/>
   </div>
 </template>
 
@@ -11,11 +12,12 @@
 import PopularMoviesList from "./components/PopularMoviesList";
 import TopRatedMoviesList from "./components/TopRatedMoviesList";
 import MovieSearchApp from "./components/MovieSearchApp.vue";
+import PopularTVList from "./components/PopularTVList";
 
 export default {
   name: 'app',
   components: {
-    /* HelloWorld, */ PopularMoviesList, TopRatedMoviesList, MovieSearchApp
+    /* HelloWorld, */ PopularMoviesList, TopRatedMoviesList, MovieSearchApp, PopularTVList
   }
 }
 </script>
