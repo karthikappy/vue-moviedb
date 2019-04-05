@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-6 col-xs-12">
+  <div class="col-xs-12" :class="{'col-md-6': !expanded, 'col-md-12': expanded}">
     <div class="card movie-card">
       <div
         class="card-bgimage"
