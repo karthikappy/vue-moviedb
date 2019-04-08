@@ -3,19 +3,17 @@
     <h1>Top Rated Movies</h1>
     <div v-if="searching">Searching...</div>
     <div class="row">
-      <movie-card v-for="movie in results" :key="movie.id" :movie="movie">
-        
-      </movie-card>
+      <resultCard v-for="movie in results" :key="movie.id" :movie="movie" />
     </div>
   </div>
 </template>
 
 <script>
-import MovieCard from "./MovieCard.vue";
+import ResultCard from "./ResultCard.vue";
 
 export default {
   components: {
-    MovieCard
+    ResultCard
   },
   data() {
     return {

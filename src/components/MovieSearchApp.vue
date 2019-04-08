@@ -13,16 +13,16 @@
         </div>
     </div>
     <div class="row">
-        <movieCard v-for="movie in results" :key="movie.id" :movie="movie"/>
+        <resultCard v-for="movie in results" :key="movie.id" :movie="movie"/>
     </div>
   </div>
 </template>
 
 <script>
-import MovieCard from "./MovieCard.vue";
+import ResultCard from "./ResultCard.vue";
 export default {
     components: {
-        MovieCard
+        ResultCard
     },
   data() {
     return {

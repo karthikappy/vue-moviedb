@@ -22,7 +22,8 @@
                   </div>
                 </div>
                 <div class="col-7">
-                  <h5 class="card-title">{{movie.name}}</h5>
+                  <h5 class="card-title" v-if="movie.title">{{movie.title}}</h5>
+                  <h5 class="card-title" v-else-if="movie.name">{{movie.name}}</h5>
                 </div>
               </div>
               
@@ -56,7 +57,7 @@
 
 <script>
 export default {
-  name: "MovieCard",
+  name: "ResultCard",
   props: ["movie"],
   data() {
     return {
