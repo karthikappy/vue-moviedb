@@ -46,7 +46,7 @@
                 </div>
               </div>
             </div>
-            <div class="row" v-if="images.backdrops">
+            <div class="row" v-if="images.backdrops && expanded">
               <div class="col-md-3" v-for="backdrop in images.backdrops" v-bind:key="backdrop.file_path">
                 <img :src="'https://image.tmdb.org/t/p/w300' + backdrop.file_path">
               </div>
