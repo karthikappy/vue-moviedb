@@ -1,6 +1,6 @@
 <template>
   <div class="col-xs-12" :class="{'col-md-6': !expanded, 'col-md-12': expanded}">
-    <div class="card movie-card">
+    <div class="card" :class="{'movie-card': !expanded, 'movie-card-expanded': expanded}">
       <div
         class="card-bgimage"
         :style="{'background-image': 'url(https://image.tmdb.org/t/p/w780'+movie.backdrop_path+')'}"
@@ -129,6 +129,11 @@ export default {
   height: 330px;
   max-height: 330px;
   overflow: hidden;
+}
+.movie-card-expanded {
+  width: 100%;
+  height:700px;
+  overflow:auto;
 }
 .movie-info {
   position: absolute !important;
