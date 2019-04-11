@@ -46,6 +46,11 @@
                 </div>
               </div>
             </div>
+            <div class="row" v-if="images.backdrops">
+              <div class="col-md-3" v-for="backdrop in images.backdrops" v-bind:key="backdrop.file_path">
+                <img :src="'https://image.tmdb.org/t/p/w300' + backdrop.file_path">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -61,6 +66,7 @@ export default {
     return {
       expanded: false,
       details: {},
+      images: {},
       searching:false
     };
   },
@@ -86,6 +92,25 @@ export default {
                 this.details = res;
               }
             });
+        }
+        if (!this.images.id) {
+          fetch(
+            `https://api.themoviedb.org/3/movie/`+this.movie.id+`/images?language=en-US&include_image_language=en,null&api_key=` +
+              process.env.VUE_APP_API_KEY
+          )
+          .then(res => {
+            if (res.ok) {
+              this.searching = false;
+              return res.json();
+            } else {
+              //this.searching = false;
+            }
+          })
+          .then(res => {
+            if (res) {
+              this.images = res;
+            }
+          });
         }
       }
     }
