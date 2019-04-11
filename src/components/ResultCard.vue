@@ -11,28 +11,29 @@
             <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w780' + movie.poster_path" alt width="100%">
           </div>
           <div class="col-8">
+            <div class="row" @click="expanded=!expanded" style="cursor:pointer">
+              <div class="col-1">
+                <div v-if="expanded">
+                  <div><font-awesome-icon icon="chevron-down" /></div>
+                </div>
+                <div v-else>
+                  <div><font-awesome-icon icon="chevron-right" /></div>
+                </div>
+              </div>
+              <div class="col-8">
+                <h5 class="card-title" v-if="movie.title">{{movie.title}}</h5>
+                <h5 class="card-title" v-else-if="movie.name">{{movie.name}}</h5>
+              </div>
+            </div>
+            <div class="row" v-if="expanded">
+              <p class="font-weight-light">{{details.tagline}}</p>
+            </div>
             <div class="row">
-              <div class="row" @click="expanded=!expanded" style="cursor:pointer">
-                <div class="col-1">
-                  <div v-if="expanded">
-                    <div><font-awesome-icon icon="chevron-down" /></div>
-                  </div>
-                  <div v-else>
-                    <div><font-awesome-icon icon="chevron-right" /></div>
-                  </div>
-                </div>
-                <div class="col-7">
-                  <h5 class="card-title" v-if="movie.title">{{movie.title}}</h5>
-                  <h5 class="card-title" v-else-if="movie.name">{{movie.name}}</h5>
-                </div>
-              </div>
+              <p class="card-text">{{movie.overview}}</p>
+            </div>
+            <div class="row">
               
-              <div class="row" v-if="expanded">
-                <p class="font-weight-light">{{details.tagline}}</p>
-              </div>
-              <div class="row">
-                <p class="card-text">{{movie.overview}}</p>
-              </div>
+              
 
               <div class="row">
                 <div class="col-12" v-if="movie.release_date">
