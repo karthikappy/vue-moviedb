@@ -51,6 +51,12 @@
                 <img :src="'https://image.tmdb.org/t/p/w300' + backdrop.file_path">
               </div>
             </div>
+            <div class="row" v-if="images.posters && expanded">
+              <div class="col-md-1" v-for="poster in images.posters" v-bind:key="poster.file_path">
+                <img :src="'https://image.tmdb.org/t/p/w92' + poster.file_path">
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
