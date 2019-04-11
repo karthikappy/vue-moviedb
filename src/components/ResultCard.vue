@@ -24,6 +24,9 @@
                 <h5 class="card-title" v-if="movie.title">{{movie.title}}</h5>
                 <h5 class="card-title" v-else-if="movie.name">{{movie.name}}</h5>
               </div>
+              <div class="col-3" v-if="movie.original_language">
+                {{movie.original_language}}
+              </div>
             </div>
             <div class="row" v-if="expanded">
               <p class="font-weight-light">{{details.tagline}}</p>
@@ -31,21 +34,15 @@
             <div class="row">
               <p class="card-text">{{movie.overview}}</p>
             </div>
+            <div class="row" v-if="movie.release_date">
+              <span class="font-weight-light">Released</span>
+              :
+              <span class="font-weight-bold">{{movie.release_date}}</span>
+            </div>
             <div class="row">
-              
-              
-
               <div class="row">
-                <div class="col-12" v-if="movie.release_date">
-                  <span class="font-weight-bold">Released</span>
-                  :
-                  <span class="font-weight-bold">{{movie.release_date}}</span>
-                </div>
                 <div class="col-4" v-if="movie.adult">
                   <div class="col-12">Adult</div>
-                </div>
-                <div class="col-4" v-if="movie.original_language">
-                  <div class="col-12">{{movie.original_language}}</div>
                 </div>
               </div>
             </div>
