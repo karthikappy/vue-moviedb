@@ -1,73 +1,104 @@
 <template>
-  <div class="col-xs-12" :class="{'col-md-6': !expanded, 'col-md-12': expanded}">
-    <div class="card" :class="{'movie-card': !expanded, 'movie-card-expanded': expanded}">
-      <div
-        class="card-bgimage"
-        :style="{'background-image': 'url(https://image.tmdb.org/t/p/w780'+movie.backdrop_path+')'}"
-      />
-      <div class="movie-info col-md-12">
-        <div class="row">
-          <div class="col-4">
-            <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w780' + movie.poster_path" alt width="100%">
-          </div>
-          <div class="col-8">
-            <div class="row" @click="expanded=!expanded" style="cursor:pointer">
-              <div class="col-1">
-                <div v-if="expanded">
-                  <div><font-awesome-icon icon="chevron-down" /></div>
+  <mdb-col col="6">
+    <mdb-card>
+      <mdb-card-image :src="'https://image.tmdb.org/t/p/w780'+movie.backdrop_path" alt="Card image cap"></mdb-card-image>
+      <mdb-card-body>
+        <mdb-card-title v-if="movie.title">{{movie.title}}</mdb-card-title>
+        <mdb-card-title v-else-if="movie.name">{{movie.name}}</mdb-card-title>
+        <mdb-badge color="info-color" v-if="movie.original_language">
+          {{movie.original_language}}
+        </mdb-badge>
+        <hr/>
+        <mdb-card-text>{{details.tagline}}</mdb-card-text>
+        <mdb-card-text>{{movie.overview}}</mdb-card-text>
+        <mdb-btn color="primary" @click="expanded=!expanded">Expand</mdb-btn>
+      </mdb-card-body>
+    </mdb-card>
+  </mdb-col>
+  <!-- <mdb-col col="6">
+    
+    <div class="col-xs-12" :class="{'col-md-6': !expanded, 'col-md-12': expanded}">
+      <div class="card" :class="{'movie-card': !expanded, 'movie-card-expanded': expanded}">
+        <div
+          class="card-bgimage"
+          :style="{'background-image': 'url(https://image.tmdb.org/t/p/w780'+movie.backdrop_path+')'}"
+        />
+        <div class="movie-info col-md-12">
+          <div class="row">
+            <div class="col-4">
+              <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w780' + movie.poster_path" alt width="100%">
+            </div>
+            <div class="col-8">
+              <div class="row" @click="expanded=!expanded" style="cursor:pointer">
+                <div class="col-1">
+                  <div v-if="expanded">
+                    <div><font-awesome-icon icon="chevron-down" /></div>
+                  </div>
+                  <div v-else>
+                    <div><font-awesome-icon icon="chevron-right" /></div>
+                  </div>
                 </div>
-                <div v-else>
-                  <div><font-awesome-icon icon="chevron-right" /></div>
+                <div class="col-8">
+                  <h5 class="card-title" v-if="movie.title">{{movie.title}}</h5>
+                  <h5 class="card-title" v-else-if="movie.name">{{movie.name}}</h5>
+                </div>
+                <div class="col-3" v-if="movie.original_language">
+                  {{movie.original_language}}
                 </div>
               </div>
-              <div class="col-8">
-                <h5 class="card-title" v-if="movie.title">{{movie.title}}</h5>
-                <h5 class="card-title" v-else-if="movie.name">{{movie.name}}</h5>
+              <div class="row" v-if="expanded">
+                <p class="font-weight-light">{{details.tagline}}</p>
               </div>
-              <div class="col-3" v-if="movie.original_language">
-                {{movie.original_language}}
-              </div>
-            </div>
-            <div class="row" v-if="expanded">
-              <p class="font-weight-light">{{details.tagline}}</p>
-            </div>
-            <div class="row">
-              <p class="card-text">{{movie.overview}}</p>
-            </div>
-            <div class="row" v-if="movie.release_date">
-              <span class="font-weight-light">Released</span>
-              :
-              <span class="font-weight-bold">{{movie.release_date}}</span>
-            </div>
-            <div class="row">
               <div class="row">
-                <div class="col-4" v-if="movie.adult">
-                  <div class="col-12">Adult</div>
+                <p class="card-text">{{movie.overview}}</p>
+              </div>
+              <div class="row" v-if="movie.release_date">
+                <span class="font-weight-light">Released</span>
+                :
+                <span class="font-weight-bold">{{movie.release_date}}</span>
+              </div>
+              <div class="row">
+                <div class="row">
+                  <div class="col-4" v-if="movie.adult">
+                    <div class="col-12">Adult</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row" v-if="images.backdrops && expanded">
-              <div class="col-md-3" v-for="backdrop in images.backdrops" v-bind:key="backdrop.file_path">
-                <img :src="'https://image.tmdb.org/t/p/w300' + backdrop.file_path">
+              <div class="row" v-if="images.backdrops && expanded">
+                <div class="col-md-3" v-for="backdrop in images.backdrops" v-bind:key="backdrop.file_path">
+                  <img :src="'https://image.tmdb.org/t/p/w300' + backdrop.file_path">
+                </div>
               </div>
-            </div>
-            <div class="row" v-if="images.posters && expanded">
-              <div class="col-md-1" v-for="poster in images.posters" v-bind:key="poster.file_path">
-                <img :src="'https://image.tmdb.org/t/p/w92' + poster.file_path">
+              <div class="row" v-if="images.posters && expanded">
+                <div class="col-md-1" v-for="poster in images.posters" v-bind:key="poster.file_path">
+                  <img :src="'https://image.tmdb.org/t/p/w92' + poster.file_path">
+                </div>
               </div>
+              
             </div>
-            
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </mdb-col> -->
 </template>
 
 <script>
+import { mdbCard, mdbCardImage, mdbCardBody, mdbCardTitle, mdbCardText, mdbBtn, mdbCol, mdbBadge } from 'mdbvue';
+  
 export default {
   name: "ResultCard",
   props: ["movie"],
+  components: {
+     mdbCard,
+      mdbCardImage,
+      mdbCardBody,
+      mdbCardTitle,
+      mdbCardText,
+      mdbBtn,
+      mdbCol,
+      mdbBadge
+  },
   data() {
     return {
       expanded: false,
