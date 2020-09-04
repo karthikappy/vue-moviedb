@@ -2,18 +2,19 @@
   <div class="popular-movies-list">
     <h1>Popular Movies</h1>
     <div v-if="searching">Searching...</div>
-    <div class="row">
+    <mdb-row>
       <resultCard v-for="movie in results" :key="movie.id" :movie="movie" />
-    </div>
+    </mdb-row>
   </div>
 </template>
 
 <script>
 import ResultCard from "./ResultCard.vue";
+import {mdbRow} from 'mdbvue';
 
 export default {
   components: {
-    ResultCard
+    ResultCard, mdbRow
   },
   data() {
     return {
