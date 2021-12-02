@@ -49,7 +49,7 @@
 
     <v-main>
       <v-container v-if="tabIndex==0">
-        <popular-movies></popular-movies>
+        <results-page></results-page>
       </v-container>
       <v-container v-if="tabIndex==1">
 
@@ -68,13 +68,13 @@
 </template>
 
 <script>
-import PopularMovies from './components/PopularMovies';
+import ResultsPage from './components/ResultsPage.vue';
 
 export default {
   name: 'App',
 
   components: {
-    PopularMovies
+    ResultsPage
   },
 
   data: () => ({
