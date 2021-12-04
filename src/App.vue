@@ -49,19 +49,19 @@
 
     <v-main>
       <v-container v-if="tabIndex==0">
-        <results-page></results-page>
+        <results-page endpoint="movie/popular"></results-page>
       </v-container>
       <v-container v-if="tabIndex==1">
-
+        <results-page endpoint="tv/popular"></results-page>
       </v-container>
       <v-container v-if="tabIndex==2">
-
+        <results-page endpoint="movie/top_rated"></results-page>
       </v-container>
       <v-container v-if="tabIndex==3">
-
+        <results-page endpoint="tv/top_rated"></results-page>
       </v-container>
       <v-container v-if="tabIndex==4">
-
+        
       </v-container>
     </v-main>
   </v-app>

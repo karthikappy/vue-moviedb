@@ -32,6 +32,23 @@
 
 <script>
 export default {
+  props: {
+    "api-version": {
+      required: false,
+      default: "3"
+    },
+    "endpoint": {
+      required: true
+    },
+    "page-num": {
+      required: false,
+      default: 1
+    },
+    "language": {
+      required: false,
+      default: "en-US"
+    }
+  },
   data() {
     return {
       searching: false,
@@ -39,30 +56,35 @@ export default {
     };
   },
   created: function() {
-    console.log(this)
-    this.searching = true;
-    fetch(
-      `https://api.themoviedb.org/3/movie/popular?page=1&language=en-US&api_key=` +
-        process.env.VUE_APP_MOVIEDB_API_KEY
-    )
-    .then(res => {
-        if (res.ok) {
-          this.searching = false;
-          return res.json();
-        } else {
-          this.searching = false;
-        }
-      })
+    this.loadData();
+  },
+  methods: {
+    loadData: function() {
+      this.searching = true;
+      fetch(
+        `https://api.themoviedb.org/`+this.apiVersion+`/`+this.endpoint+`?page=`+this.pageNum+`&language=`+this.language+`&api_key=` +
+          process.env.VUE_APP_MOVIEDB_API_KEY
+      )
       .then(res => {
-        if (res) {
-          this.results = res.results;
-        }
-      });
+          if (res.ok) {
+            this.searching = false;
+            return res.json();
+          } else {
+            this.searching = false;
+          }
+        })
+        .then(res => {
+          if (res) {
+            this.results = res.results;
+          }
+        });
+    }
+  },
+  watch: {
+    endpoint: function() {
+      this.loadData();
+    }
   }
-  /* craeted: function() {
-   
-      
-  } */
 }
 </script>
 
